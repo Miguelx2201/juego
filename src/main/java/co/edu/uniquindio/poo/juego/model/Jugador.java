@@ -54,8 +54,6 @@ public abstract class Jugador implements Atacante{
     public void setDefensa(double defensa) {
         this.defensa = defensa;
     }
-
-    public abstract void atacar(Jugador jugador);
     public void recibirDanio(double danio) {
         vida -= danio;
     }
