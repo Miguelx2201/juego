@@ -7,6 +7,9 @@ public class Abuela extends Jugador{
 
     @Override
     public void atacar(Jugador jugador) {
-
+        double danio = calcularDanio(getAtaque());
+        jugador.recibirDanio(danio);
+        System.out.println("La abuela "+getNombre()+", le ha pegado un chancletazo francotirador desde la distancia a "
+                +jugador.getNombre()+" y le ha inflingido "+danio+" de daño!");
     }
 }
