@@ -71,4 +71,7 @@ public abstract class Jugador implements Atacante{
             return ataque*0.7;
         }
     }
+    public boolean isVivo(){
+        return vida > 0;
+    }
 }
