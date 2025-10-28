@@ -8,7 +8,7 @@ public class Arquero extends Jugador{
 
     @Override
     public void atacar(Jugador jugador) {
-        double danio = calcularDanio(getAtaque());
+        double danio = jugador.calcularDanio(getAtaque());
         jugador.recibirDanio(danio);
         System.out.println("El arquero "+getNombre()+" le ha lanzado una lluvia de flechas a "+jugador.getNombre()+
                 " y le ha inflingido "+danio+" de daño!");

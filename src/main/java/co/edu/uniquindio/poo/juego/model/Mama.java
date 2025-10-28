@@ -7,7 +7,7 @@ public class Mama extends Jugador{
 
     @Override
     public void atacar(Jugador jugador) {
-        double danio = calcularDanio(getAtaque());
+        double danio = jugador.calcularDanio(getAtaque());
         jugador.recibirDanio(danio);
         System.out.println("La mama "+getNombre()+", le ha pegado 3 calvazos a "+jugador.getNombre()+" y le ha " +
                 "inflingido "+danio+" de daño!");

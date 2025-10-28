@@ -7,7 +7,7 @@ public class Mago extends Jugador {
 
     @Override
     public void atacar(Jugador jugador) {
-        double danio = calcularDanio(getAtaque());
+        double danio = jugador.calcularDanio(getAtaque());
         jugador.recibirDanio(danio);
         System.out.println("El mago "+getNombre()+" le ha lanzado una bola de fuego a "+jugador.getNombre()+" y le ha" +
                 " inflingido "+danio+" de daño!");
