@@ -5,16 +5,13 @@ import java.util.List;
 
 public class Juego {
     private String nombre;
-    private List<Equipo> equipos;
-    private List<Jugador> jugadores;
+    private Equipo equipo1;
+    private Equipo equipo2;
 
-    public Juego(String name) {
-        if(name.isBlank()) {
-            throw new IllegalArgumentException("El nombre es obligatorio");
-        }
-        this.nombre = name;
-        this.equipos = new ArrayList<>();
-        this.jugadores = new ArrayList<>();
+    public Juego(String nombre, Equipo equipo1, Equipo equipo2) {
+        this.nombre = nombre;
+        this.equipo1 = equipo1;
+        this.equipo2 = equipo2;
     }
 
     public String getNombre() {
@@ -25,21 +22,22 @@ public class Juego {
         this.nombre = nombre;
     }
 
-    public List<Equipo> getEquipos() {
-        return equipos;
+    public Equipo getEquipo1() {
+        return equipo1;
     }
 
-    public void setEquipos(List<Equipo> equipos) {
-        this.equipos = equipos;
+    public void setEquipo1(Equipo equipo1) {
+        this.equipo1 = equipo1;
     }
 
-    public List<Jugador> getJugadores() {
-        return jugadores;
+    public Equipo getEquipo2() {
+        return equipo2;
     }
 
-    public void setJugadores(List<Jugador> jugadores) {
-        this.jugadores = jugadores;
+    public void setEquipo2(Equipo equipo2) {
+        this.equipo2 = equipo2;
     }
+
     public void jugar(){
 
     }
