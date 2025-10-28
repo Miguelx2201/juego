@@ -54,9 +54,21 @@ public abstract class Jugador implements Atacante{
     public void setDefensa(double defensa) {
         this.defensa = defensa;
     }
+
+    /**
+     * Metodo para recibir el daño, restandolo de la vida actual
+     * @param danio
+     */
     public void recibirDanio(double danio) {
         vida -= danio;
     }
+
+    /**
+     * Metodo para calcular el daño que se le realizara al jugador, para el calculo se tiene en cuenta la defensa, en
+     * caso de que el jugador tenga defensa, esta absorbera el 30% del daño potencial que tiene el ataque del rival
+     * @param ataque es el valor del ataque del jugador
+     * @return
+     */
     public double calcularDanio(double ataque) {
         if(defensa == 0) {
             return ataque;
@@ -71,6 +83,11 @@ public abstract class Jugador implements Atacante{
             return ataque*0.7;
         }
     }
+
+    /**
+     * Metodo para saber si un jugador esta vivo o no
+     * @return
+     */
     public boolean isVivo(){
         return vida > 0;
     }
