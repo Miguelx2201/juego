@@ -1,4 +1,4 @@
-package co.edu.uniquindio.poo.juego;
+package co.edu.uniquindio.poo.juego.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

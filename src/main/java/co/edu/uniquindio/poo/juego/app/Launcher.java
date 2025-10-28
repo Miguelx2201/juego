@@ -1,4 +1,4 @@
-package co.edu.uniquindio.poo.juego;
+package co.edu.uniquindio.poo.juego.app;
 
 import javafx.application.Application;
 
