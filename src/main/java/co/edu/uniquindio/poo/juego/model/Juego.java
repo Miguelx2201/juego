@@ -39,6 +39,14 @@ public class Juego {
         this.equipo2 = equipo2;
     }
 
+    public boolean isTurnoEquipo1() {
+        return turnoEquipo1;
+    }
+
+    public void setTurnoEquipo1(boolean turnoEquipo1) {
+        this.turnoEquipo1 = turnoEquipo1;
+    }
+
     /**
      * Este metodo ejecuta el juego sin embargo, investigando me di cuenta de que al ejecutarlo todo en un solo ciclo
      * While no iba a funcionar correctamente con la interactivdad que deseamos con la GUI, asi que decidimos
