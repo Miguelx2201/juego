@@ -1,0 +1,69 @@
+/* Fondo de la pantalla de configuración */
+.background-config {
+    -fx-background-color: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+    -fx-padding: 20;
+}
+
+/* Fondo del combate */
+.background-combate {
+    -fx-background-color: linear-gradient(to bottom right, #141E30, #243B55);
+}
+
+/* Panel de equipo */
+.panel-equipo {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 2;
+    -fx-padding: 15;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 10, 0.2, 0, 3);
+}
+
+/* Botón agregar jugador */
+.btn-agregar {
+    -fx-background-color: rgba(100, 181, 246, 0.8);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 10;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+}
+.btn-agregar:hover {
+    -fx-background-color: rgba(33, 150, 243, 1);
+}
+
+/* Botón iniciar batalla */
+.btn-iniciar {
+    -fx-background-color: linear-gradient(to right, #ff512f, #dd2476);
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-background-radius: 20;
+    -fx-padding: 10 30;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+.btn-iniciar:hover {
+    -fx-background-color: linear-gradient(to right, #ff9966, #ff5e62);
+}
+
+/* Texto de aviso */
+.lbl-aviso {
+    -fx-text-fill: #ffb3b3;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+/* Texto general */
+.label {
+    -fx-text-fill: white;
+}
+
+/* ListView */
+.list-view {
+    -fx-background-color: rgba(255,255,255,0.1);
+    -fx-text-fill: white;
+    -fx-border-color: rgba(255,255,255,0.2);
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
