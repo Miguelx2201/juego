@@ -47,7 +47,7 @@ public class CombateController{
                 if (empty || jugador == null) {
                     setGraphic(null);
                 } else {
-                    nombre.setText(jugador.getNombre() + " (" + jugador.getVida() + " ❤️");
+                    nombre.setText(jugador.getNombre() + " (" + jugador.getVida() + " ❤️)");
                     double vida = jugador.getVida();
                     double vidaMax = jugador.getVidaMaxima();
                     double porcentaje = vida / vidaMax;
