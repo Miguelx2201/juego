@@ -36,7 +36,7 @@ public class Equipo {
      * Metodo para añadir a un jugador verificando que este primero no exista y que no sea null
      * @param jugador
      */
-    public void agregarJugador(Jugador jugador) {
+    public void addJugador(Jugador jugador) {
         if(jugador == null) throw new IllegalArgumentException("El jugador a añadir no puede ser nulo");
         Optional<Jugador> encontrado = buscarJugador(jugador.getNombre());
         if(encontrado.isPresent()) {

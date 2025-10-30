@@ -91,7 +91,4 @@ public abstract class Jugador implements Atacante{
     public boolean isVivo(){
         return vida > 0;
     }
-    public boolean estaDerrotado() {
-        return !isVivo();
-    }
 }

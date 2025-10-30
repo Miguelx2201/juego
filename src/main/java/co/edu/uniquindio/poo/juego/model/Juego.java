@@ -4,21 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Juego {
+    private String nombre;
     private Equipo equipo1;
     private Equipo equipo2;
+    private boolean turnoEquipo1 = true;
 
-    // control de turno por jugador
-    private List<Jugador> turnoJugadores; // todos los jugadores de ambos equipos
-    private int indiceTurno = 0;
-
-    public Juego(Equipo equipo1, Equipo equipo2) {
+    public Juego(String nombre, Equipo equipo1, Equipo equipo2) {
+        this.nombre = nombre;
         this.equipo1 = equipo1;
         this.equipo2 = equipo2;
+    }
 
-        // inicializamos la lista de turnos
-        turnoJugadores = new ArrayList<>();
-        turnoJugadores.addAll(equipo1.getJugadores());
-        turnoJugadores.addAll(equipo2.getJugadores());
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public Equipo getEquipo1() {
@@ -37,57 +39,48 @@ public class Juego {
         this.equipo2 = equipo2;
     }
 
-    /**
-     * Devuelve el jugador cuyo turno es actualmente activo
-     */
-    public Jugador obtenerJugadorActual() {
-        if (turnoJugadores.isEmpty())
-            return null;
+    public boolean isTurnoEquipo1() {
+        return turnoEquipo1;
+    }
 
-        Jugador actual = turnoJugadores.get(indiceTurno);
-
-        // si está derrotado, avanzamos automáticamente
-        if (actual.estaDerrotado()) {
-            siguienteTurno();
-            return obtenerJugadorActual();
-        }
-
-        return actual;
+    public void setTurnoEquipo1(boolean turnoEquipo1) {
+        this.turnoEquipo1 = turnoEquipo1;
     }
 
     /**
-     * Avanza al siguiente jugador vivo
+     * Este metodo ejecuta el juego sin embargo, investigando me di cuenta de que al ejecutarlo todo en un solo ciclo
+     * While no iba a funcionar correctamente con la interactivdad que deseamos con la GUI, asi que decidimos
+     * cambiarlo debido a esto, sin embargo este metodo funciona correctamente para desarrollar el juego en consola.
+     * @return
+     */
+    public String jugar(){
+        while(!(equipo1.todosDerrotados() || equipo2.todosDerrotados())){
+            equipo1.turno(equipo2);
+            equipo2.turno(equipo1);
+        }
+        Equipo equipoGanador = equipo1.todosDerrotados() ? equipo2 : equipo1;
+        return "El equipo ganador es "+equipoGanador.getNombre()+"!";
+    }
+
+    /**
+     * Este metodo ejecuta el juego turno por turno para permitirnos asociar este metodo con un boton de la GUI y que
+     * asi el juego se vaya desarrollando segun el usuario interactue con la GUI, esta basado en la descomposicion
+     * del metodo anterior jugar() en la ejecucion de un metodo indiviual para cada turno.
+     * @return El metodo retorna un mensaje cuando algun equipo haya ganado al equipo rival, es decir que haya
+     * derrotado a todos sus contrincantes.
      */
     public String siguienteTurno() {
-        if (hayGanador()) {
-            Equipo equipoGanador = getGanador();
-            return "El equipo ganador es " + equipoGanador.getNombre() + "!";
+        if(equipo1.todosDerrotados() || equipo2.todosDerrotados()) {
+            Equipo equipoGanador = equipo1.todosDerrotados() ? equipo2 : equipo1;
+            return "El equipo ganador es "+equipoGanador.getNombre()+"!";
         }
-
-        // avanzamos al siguiente jugador
-        do {
-            indiceTurno = (indiceTurno + 1) % turnoJugadores.size();
-        } while (turnoJugadores.get(indiceTurno).estaDerrotado());
-
+        if(turnoEquipo1) {
+            equipo1.turno(equipo2);
+        } else {
+            equipo2.turno(equipo1);
+        }
+        turnoEquipo1 = !turnoEquipo1;
         return null;
     }
-
-    /**
-     * Comprueba si hay un ganador
-     */
-    public boolean hayGanador() {
-        boolean eq1Vivo = equipo1.getJugadores().stream().anyMatch(j -> !j.estaDerrotado());
-        boolean eq2Vivo = equipo2.getJugadores().stream().anyMatch(j -> !j.estaDerrotado());
-        return !(eq1Vivo && eq2Vivo);
-    }
-
-    /**
-     * Devuelve el equipo ganador
-     */
-    public Equipo getGanador() {
-        if (!hayGanador()) return null;
-
-        boolean eq1Vivo = equipo1.getJugadores().stream().anyMatch(j -> !j.estaDerrotado());
-        return eq1Vivo ? equipo1 : equipo2;
-    }
+    
 }
