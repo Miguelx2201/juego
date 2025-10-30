@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="co.edu.uniquindio.poo.juego.controller.ConfiguracionController"
+      alignment="CENTER" spacing="10" style="-fx-padding: 20;">
+
+    <Label text="Configuración de Equipos" style="-fx-font-size: 20;" />
+
+    <TextField fx:id="txtNombre" promptText="Nombre del jugador" />
+    <ComboBox fx:id="comboTipo" promptText="Tipo de jugador" />
+    <TextField fx:id="txtVida" promptText="Vida" />
+    <TextField fx:id="txtAtaque" promptText="Ataque" />
+    <TextField fx:id="txtDefensa" promptText="Defensa" />
+
+    <Button text="Agregar jugador" onAction="#agregarJugador" />
+    <Button text="Cambiar equipo actual" onAction="#cambiarEquipo" />
+
+    <HBox spacing="10" alignment="CENTER">
+        <VBox>
+            <Label text="Equipo Azul" />
+            <ListView fx:id="listaEquipo1" />
+        </VBox>
+        <VBox>
+            <Label text="Equipo Rojo" />
+            <ListView fx:id="listaEquipo2" />
+        </VBox>
+    </HBox>
+
+    <Button text="Iniciar Batalla" onAction="#iniciarBatalla" />
+    <Label fx:id="lblAviso" textFill="red" />
+</VBox>
