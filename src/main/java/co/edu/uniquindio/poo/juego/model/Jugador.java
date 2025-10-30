@@ -6,11 +6,13 @@ public abstract class Jugador implements Atacante{
     private double vida;
     private double ataque;
     private double defensa;
+    private double vidaMaxima;
 
     public Jugador(Equipo equipo, String nombre, double vida, double ataque, double defensa) {
         this.equipo = equipo;
         this.nombre = nombre;
         this.vida = vida;
+        this.vidaMaxima = vida;
         this.ataque = ataque;
         this.defensa = defensa;
     }
@@ -55,12 +57,19 @@ public abstract class Jugador implements Atacante{
         this.defensa = defensa;
     }
 
+    public double getVidaMaxima() {
+        return vidaMaxima;
+    }
+
     /**
      * Metodo para recibir el daño, restandolo de la vida actual
      * @param danio
      */
     public void recibirDanio(double danio) {
         vida -= danio;
+        if(vida <= 0) {
+            vida = 0;
+        }
     }
 
     /**

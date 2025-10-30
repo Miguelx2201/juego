@@ -1,26 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<VBox xmlns="http://javafx.com/javafx/21"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="co.edu.uniquindio.poo.juego.controller.CombateController"
-      alignment="CENTER" spacing="15" style="-fx-padding: 20;">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.poo.juego.controller.CombateController"
+            style="-fx-background-color: linear-gradient(to bottom, #243B55, #141E30); -fx-padding: 20;">
 
-    <Label fx:id="lblTurno" style="-fx-font-size: 18;" />
-
-    <HBox spacing="20">
-        <VBox>
-            <Label text="Equipo Azul" />
-            <ListView fx:id="listaEquipo1" prefHeight="200" />
+    <!-- Título superior -->
+    <top>
+        <VBox alignment="CENTER" spacing="10">
+            <Label text="⚔️ Batalla Épica ⚔️"
+                   textFill="white"
+                   style="-fx-font-size: 36px; -fx-font-family: 'Agency FB'; -fx-font-weight: bold;"/>
+            <Label fx:id="lblTurno" textFill="#00e1ff"
+                   style="-fx-font-size: 18px; -fx-font-family: 'Consolas';"/>
         </VBox>
-        <VBox>
-            <Label text="Equipo Rojo" />
-            <ListView fx:id="listaEquipo2" prefHeight="200" />
-        </VBox>
-    </HBox>
+    </top>
 
-    <Button fx:id="btnAtacar" text="Atacar" onAction="#atacar" />
-    <Label fx:id="lblMensaje" style="-fx-font-size: 16;" />
-</VBox>
+    <!-- Zona central con los dos equipos -->
+    <center>
+        <HBox spacing="50" alignment="CENTER">
+
+            <!-- Equipo Azul -->
+            <VBox alignment="CENTER" spacing="10" prefWidth="300"
+                  style="-fx-background-color: rgba(0,0,50,0.4); -fx-padding: 15; -fx-border-color: #00aaff; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-radius: 10;">
+                <Label text="Equipo Azul" textFill="#00c8ff"
+                       style="-fx-font-size: 20px; -fx-font-family: 'Arial Black';"/>
+
+                <ListView fx:id="listaEquipo1" prefHeight="300"
+                          style="-fx-background-color: transparent; -fx-control-inner-background: transparent; -fx-border-color: transparent;"/>
+            </VBox>
+
+            <!-- Equipo Rojo -->
+            <VBox alignment="CENTER" spacing="10" prefWidth="300"
+                  style="-fx-background-color: rgba(50,0,0,0.4); -fx-padding: 15; -fx-border-color: #ff4444; -fx-border-width: 2; -fx-border-radius: 10; -fx-background-radius: 10;">
+                <Label text="Equipo Rojo" textFill="#ff6666"
+                       style="-fx-font-size: 20px; -fx-font-family: 'Arial Black';"/>
+
+                <ListView fx:id="listaEquipo2" prefHeight="300"
+                          style="-fx-background-color: transparent; -fx-control-inner-background: transparent; -fx-border-color: transparent;"/>
+            </VBox>
+
+        </HBox>
+    </center>
+
+    <!-- Zona inferior con botón y mensaje -->
+    <bottom>
+        <VBox alignment="CENTER" spacing="10">
+            <Button fx:id="btnAtacar" text="⚔️ Atacar"
+                    onAction="#atacar"
+                    style="-fx-background-color: linear-gradient(to right, #0f9b0f, #00ff95);
+                           -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;
+                           -fx-background-radius: 20; -fx-padding: 10 25 10 25;
+                           -fx-cursor: hand; -fx-border-color: white; -fx-border-radius: 20;"/>
+            <Label fx:id="lblMensaje" textFill="white"
+                   style="-fx-font-size: 18px; -fx-font-family: 'Consolas';"/>
+        </VBox>
+    </bottom>
+</BorderPane>

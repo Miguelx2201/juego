@@ -7,6 +7,8 @@ public class Juego {
     private Equipo equipo1;
     private Equipo equipo2;
     private boolean turnoEquipo1 = true;
+    private int indiceJugadorActualEquipo1 = 0;
+    private int indiceJugadorActualEquipo2 = 0;
 
     public Juego( Equipo equipo1, Equipo equipo2) {
         this.equipo1 = equipo1;
@@ -73,55 +75,53 @@ public class Juego {
 //        return null;
 //    }
     public boolean hayGanador() {
-        return equipo1.todosDerrotados() || equipo2.todosDerrotados();
+        boolean equipo1Muerto = equipo1.getJugadores().stream().noneMatch(j -> j.getVida() > 0);
+        boolean equipo2Muerto = equipo2.getJugadores().stream().noneMatch(j -> j.getVida() > 0);
+        return equipo1Muerto || equipo2Muerto;
     }
+
     public Equipo getGanador() {
-        if(hayGanador()) {
-            return equipo1.todosDerrotados() ? equipo2 : equipo1;
-        }
+        boolean equipo1Muerto = equipo1.getJugadores().stream().noneMatch(j -> j.getVida() > 0);
+        boolean equipo2Muerto = equipo2.getJugadores().stream().noneMatch(j -> j.getVida() > 0);
+        if (equipo1Muerto && !equipo2Muerto) return equipo2;
+        if (equipo2Muerto && !equipo1Muerto) return equipo1;
         return null;
     }
     // Indica si es el turno del equipo 1
     //private boolean turnoEquipo1 = true;
-    private int indiceJugadorActual = 0;
+
 
     /**
      * Obtiene el jugador actual que debe realizar su acción.
      */
     public Jugador obtenerJugadorActual() {
-        Equipo equipoActual = turnoEquipo1 ? equipo1 : equipo2;
-
-        // Evitar índice fuera de rango
-        if (equipoActual.getJugadores().isEmpty()) return null;
-
-        // Saltar jugadores derrotados
-        while (indiceJugadorActual < equipoActual.getJugadores().size() &&
-                equipoActual.getJugadores().get(indiceJugadorActual).estaDerrotado()) {
-            indiceJugadorActual++;
-        }
-
-        // Si todos los jugadores de este equipo están derrotados, pasar turno
-        if (indiceJugadorActual >= equipoActual.getJugadores().size()) {
-            siguienteTurno();
-            return obtenerJugadorActual();
-        }
-
-        return equipoActual.getJugadores().get(indiceJugadorActual);
+        return turnoEquipo1
+                ? equipo1.getJugadores().get(indiceJugadorActualEquipo1)
+                : equipo2.getJugadores().get(indiceJugadorActualEquipo2);
     }
 
     /**
      * Pasa al siguiente turno.
      */
     public void siguienteTurno() {
-        indiceJugadorActual++;
-        Equipo equipoActual = turnoEquipo1 ? equipo1 : equipo2;
+        // Alterna el turno entre equipos cada vez que se llama
+        turnoEquipo1 = !turnoEquipo1;
 
-        // Si ya pasaron todos los jugadores del equipo actual, cambiar turno
-        if (indiceJugadorActual >= equipoActual.getJugadores().size()) {
-            indiceJugadorActual = 0;
-            turnoEquipo1 = !turnoEquipo1;
+        if (turnoEquipo1) {
+            // Si es turno del equipo 1, avanza al siguiente jugador vivo de ese equipo
+            indiceJugadorActualEquipo1++;
+            if (indiceJugadorActualEquipo1 >= equipo1.getJugadores().size()) {
+                indiceJugadorActualEquipo1 = 0;
+            }
+        } else {
+            // Si es turno del equipo 2, avanza al siguiente jugador vivo de ese equipo
+            indiceJugadorActualEquipo2++;
+            if (indiceJugadorActualEquipo2 >= equipo2.getJugadores().size()) {
+                indiceJugadorActualEquipo2 = 0;
+            }
         }
     }
+
 
 
 }

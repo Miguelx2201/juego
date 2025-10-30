@@ -1,34 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
-<VBox xmlns="http://javafx.com/javafx/21"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="co.edu.uniquindio.poo.juego.controller.ConfiguracionController"
-      alignment="CENTER" spacing="10" style="-fx-padding: 20;">
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-    <Label text="Configuración de Equipos" style="-fx-font-size: 20;" />
-
-    <TextField fx:id="txtNombre" promptText="Nombre del jugador" />
-    <ComboBox fx:id="comboTipo" promptText="Tipo de jugador" />
-    <TextField fx:id="txtVida" promptText="Vida" />
-    <TextField fx:id="txtAtaque" promptText="Ataque" />
-    <TextField fx:id="txtDefensa" promptText="Defensa" />
-
-    <Button text="Agregar jugador" onAction="#agregarJugador" />
-    <Button text="Cambiar equipo actual" onAction="#cambiarEquipo" />
-
-    <HBox spacing="10" alignment="CENTER">
-        <VBox>
-            <Label text="Equipo Azul" />
-            <ListView fx:id="listaEquipo1" />
-        </VBox>
-        <VBox>
-            <Label text="Equipo Rojo" />
-            <ListView fx:id="listaEquipo2" />
-        </VBox>
-    </HBox>
-
-    <Button text="Iniciar Batalla" onAction="#iniciarBatalla" />
-    <Label fx:id="lblAviso" textFill="red" />
+<VBox alignment="CENTER" spacing="10" style="-fx-padding: 20; -fx-background-color: linear-gradient(to bottom, #243B55, #141E30);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.juego.controller.ConfiguracionController">
+   <children>
+   
+       <Label text="Configuración de Equipos" textFill="#2752ee" underline="true">
+         <font>
+            <Font name="Agency FB" size="36.0" />
+         </font>
+      </Label>
+      <GridPane alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="248.0" minWidth="10.0" prefWidth="124.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="382.0" minWidth="10.0" prefWidth="382.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+         
+             <TextField fx:id="txtNombre" promptText="Nombre del jugador" style="-fx-background-color: #828fb1; -fx-border-color: #000000; -fx-border-radius: 10;" GridPane.columnIndex="1" />
+             <ComboBox fx:id="comboTipo" prefHeight="25.0" prefWidth="130.0" promptText="Tipo de jugador" style="-fx-background-color: #828fb1; -fx-border-color: #000000; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+             <TextField fx:id="txtVida" promptText="Vida" style="-fx-background-color: #828fb1; -fx-border-color: #000000; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+             <TextField fx:id="txtAtaque" promptText="Ataque" style="-fx-background-color: #828fb1; -fx-border-radius: 10; -fx-border-color: #000000;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+             <TextField fx:id="txtDefensa" promptText="Defensa" style="-fx-background-color: #828fb1; -fx-border-color: #000000; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="126.0" text="Nombre:" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="127.0" text="Tipo:" textFill="WHITE" wrapText="true" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="128.0" text="Vida:" textFill="WHITE" wrapText="true" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="130.0" text="Ataque:" textFill="WHITE" wrapText="true" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="137.0" text="Defensa:" textFill="WHITE" wrapText="true" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+      <HBox alignment="CENTER" prefHeight="29.0" prefWidth="506.0" spacing="80.0">
+         <children>
+         
+             <Button onAction="#agregarJugador" style="-fx-background-color: #828fb1; -fx-border-color: #000000; -fx-border-radius: 10;" text="Agregar jugador" />
+             <Button onAction="#cambiarEquipo" style="-fx-background-color: #828fb1; -fx-border-color: #000000; -fx-border-radius: 10;" text="Cambiar equipo actual" />
+         </children>
+      </HBox>
+   
+       <HBox alignment="CENTER" prefHeight="267.0" prefWidth="506.0" spacing="10">
+      <children>
+              <VBox style="-fx-border-color: #000000;">
+                 <children>
+                     <Label alignment="CENTER" prefHeight="17.0" prefWidth="249.0" text="Equipo Azul" textFill="WHITE" />
+                     <ListView fx:id="listaEquipo1" style="-fx-background-color: linear-gradient(to bottom, #243B55, #141E30);" />
+                 </children>
+              </VBox>
+              <VBox style="-fx-border-color: #000000;">
+                 <children>
+                     <Label alignment="CENTER" prefHeight="17.0" prefWidth="250.0" text="Equipo Rojo" textFill="WHITE" />
+                     <ListView fx:id="listaEquipo2" style="-fx-background-color: linear-gradient(to bottom, #243B55, #141E30);" />
+                 </children>
+              </VBox>
+      </children>
+       </HBox>
+   
+       <Button onAction="#iniciarBatalla" style="-fx-background-color: #828fb1; -fx-border-color: #000000; -fx-border-radius: 10;" text="Iniciar Batalla" />
+       <Label fx:id="lblAviso" textFill="red" />
+   </children>
 </VBox>

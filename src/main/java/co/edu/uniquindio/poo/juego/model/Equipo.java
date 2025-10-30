@@ -3,6 +3,8 @@ package co.edu.uniquindio.poo.juego.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Equipo {
     private String nombre;
@@ -86,5 +88,20 @@ public class Equipo {
 
     public void turno(Equipo equipoRival) {
 
+    }
+    // ✅ Método para obtener un jugador vivo aleatorio
+    public Jugador obtenerJugadorVivoAleatorio() {
+        // Filtra los jugadores con vida mayor que 0
+        List<Jugador> vivos = jugadores.stream()
+                .filter(j -> j.getVida() > 0)
+                .collect(Collectors.toList());
+
+        if (vivos.isEmpty()) {
+            return null; // Si no hay jugadores vivos, devuelve null
+        }
+
+        // Selecciona uno al azar
+        Random random = new Random();
+        return vivos.get(random.nextInt(vivos.size()));
     }
 }
