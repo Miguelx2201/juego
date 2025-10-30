@@ -8,7 +8,7 @@
 <VBox alignment="CENTER" spacing="10" style="-fx-padding: 20; -fx-background-color: linear-gradient(to bottom, #243B55, #141E30);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.juego.controller.ConfiguracionController">
    <children>
    
-       <Label text="Configuración de Equipos" textFill="#2752ee" underline="true">
+       <Label text="Configuración de Equipos" textFill="WHITE" underline="true">
          <font>
             <Font name="Agency FB" size="36.0" />
          </font>
